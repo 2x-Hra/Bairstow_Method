@@ -1,5 +1,6 @@
 
-
+def b_cal_(coef_arr, k , n,r_coef,s_coef):
+	
 
 
 
@@ -8,7 +9,6 @@
 
 n = int(input ("Enter N :"))
 coef_arr = []
-print(coef_arr)
 i = 0
 
 coefs = input ("Enter all of them :")
