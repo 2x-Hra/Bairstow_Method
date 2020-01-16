@@ -7,6 +7,14 @@ def b_cal_(coef_arr, k , n,r_coef,s_coef):
 
 	return coef_arr[k] + r_coef * b_cal_(coef_arr,k+1,n,r_coef,s_coef) + s_coef * b_cal_(coef_arr,k+2,n,r_coef,s_coef)
 	
+def c_cal_(coef_arr, k , n,r_coef,s_coef):
+
+	if (k == n+1 or k == n+2):
+		return 0
+
+	return coef_arr[k] + r_coef * b_cal_(coef_arr,k+1,n,r_coef,s_coef) + s_coef * b_cal_(coef_arr,k+2,n,r_coef,s_coef)
+	
+
 
 
 
