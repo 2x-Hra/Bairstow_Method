@@ -45,6 +45,7 @@ print(coef_c)
 
 print(D_cal_(coef_c))
 print(D1_cal_(coef_b,coef_c))
+print(D2_cal_(coef_b,coef_c))
 
 
 
