@@ -18,6 +18,11 @@ def c_cal_(coef_arr, k , n,r_coef,s_coef):
 def D_cal_(coef_c):
 	return (coef_c[1] * coef_c[3]) - (coef_c[2]*coef_c[2])
 
+def D1_cal_(coef_b,coef_c):
+	return (-coef_b[0] * coef_c[3])-(coef_c[2] * -coef_b[1])
+
+def D2_cal_(coef_b,coef_c):
+	return (coef_c[1] * -coef_b[1] - (-coef_b[0] * coef_c[2]))
 ''' Main '''
 
 coef_b = []
@@ -39,11 +44,10 @@ while (i<len(coef_b)):
 print(coef_c)
 
 print(D_cal_(coef_c))
+print(D1_cal_(coef_b,coef_c))
 
 
-# def D1_cal(b0,b1,c2,c3):
 
-# def D2_cal(c1,c2,b0,b1):
 
 # def r_cal_(r_prev,D1,D):
 	
