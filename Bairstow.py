@@ -14,16 +14,19 @@ def c_cal_(coef_arr, k , n,r_coef,s_coef):
 
 	return coef_arr[k] + r_coef * b_cal_(coef_arr,k+1,n,r_coef,s_coef) + s_coef * b_cal_(coef_arr,k+2,n,r_coef,s_coef)
 	
-def D_cal_():
+def D_cal_(c1,c2,c3):
 
-def D1_cal():
+def D1_cal(b0,b1,c2,c3):
 
-def D2_cal():
+def D2_cal(c1,c2,b0,b1):
 
-def r_cal_():
-	# Body
+def r_cal_(r_prev,D1,D):
+	
+	''' if ((r_new - r_prev)<0.0000001 ):
+	 
+	'''
 
-def s_cal_():
+def s_cal_(s_prev,D2,D):
 	# body
 
 
