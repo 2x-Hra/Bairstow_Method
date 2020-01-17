@@ -14,6 +14,11 @@ def c_cal_(coef_arr, k , n,r_coef,s_coef):
 
 	return coef_arr[k] + r_coef * b_cal_(coef_arr,k+1,n,r_coef,s_coef) + s_coef * b_cal_(coef_arr,k+2,n,r_coef,s_coef)
 	
+def D_cal_():
+
+def D1_cal():
+
+def D2_cal():
 
 def r_cal_():
 	# Body
