@@ -27,6 +27,14 @@ def D2_cal_(coef_b,coef_c):
 def r_cal_(r_prev,D1,D):
 	return r_prev + D1/D
 
+def s_cal_(s_prev,D2,D):
+	return s_prev + D2/D
+
+
+
+
+''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
+
 if __name__ == "__main__":
 	
 	''' ~~~~ Variables ~~~~'''
@@ -40,31 +48,36 @@ if __name__ == "__main__":
 
 	''' ~~~~ ~~~~'''
 
-	while (i<len(coef_a)):
+	while (i<len(coef_a)): ''' First time Calculating array of Bs'''
 		temp = b_cal_(coef_a,i,len(coef_a)-1,r,s)
 		coef_b.append(temp)
 		i +=1
 	print(coef_b)
 	i=0
-	while (i<len(coef_b)):
+	while (i<len(coef_b)):  ''' First time Calculating array of Cs'''
 		temp = c_cal_(coef_b,i,len(coef_b)-1,r,s)
 		coef_c.append(temp)
 		i +=1
 	print(coef_c)
 
-	print(D_cal_(coef_c))
-	print(D1_cal_(coef_b,coef_c))
-	print(D2_cal_(coef_b,coef_c))
+	i=0
+	r_prev = r
+	r_next=r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 
-
-
-
-
+	while(r_next - r_prev >0.000001):
+		while (i<len(coef_a)): 
+		temp = b_cal_(coef_a,i,len(coef_a)-1,r,s)
+		coef_b.append(temp)
+		i +=1
 	
+		r_prev = r_next
+		r_next = r_cal_(r_next,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 
-# def s_cal_(s_prev,D2,D):
-# 	# body
+		print ( "prev :" + str( r_prev))
+		print ( r_next)
 
-
-
-
+	# print(D_cal_(coef_c))
+	print(D1_cal_(coef_b,coef_c))
+	# print(D2_cal_(coef_b,coef_c))
+	# print(r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c)))
+	# print(s_cal_(s,D2_cal_(coef_b,coef_c),D_cal_(coef_c)))
