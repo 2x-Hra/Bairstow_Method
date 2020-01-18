@@ -48,7 +48,7 @@ if __name__ == "__main__":
 	
 	coef_b = []
 	coef_c = []
-	coef_a = [6.0000,4.0000,3.0000,1.0000,1.0000]
+	coef_a = [-3.0000,2.0000,1.0000,0.0000,-1.0000,-1.0000]
 	i=0
 	r = -2.1
 	s = -1.9
@@ -73,7 +73,7 @@ if __name__ == "__main__":
 	r_prev = r
 	r_next=r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 
-	while(( r_next - r_prev >0.000001 ) or ( s_next - s_prev > 0.000001 )):
+	while(( abs(r_next - r_prev) >0.000001 ) or ( abs(s_next - s_prev) > 0.000001 )):
 
 		i=0
 		coef_b = []
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 			temp = b_cal_(coef_a,i,len(coef_a)-1,r_next,s_next)
 			coef_b.append(temp)
 			i +=1
-		print ("COEF _ B HERE " + str(coef_b))
+		# print ("COEF _ B HERE " + str(coef_b))
 
 		i=0
 
@@ -90,17 +90,19 @@ if __name__ == "__main__":
 			temp = c_cal_(coef_b,i,len(coef_b)-1,r_next,s_next)
 			coef_c.append(temp)
 			i +=1
-		print ("COEF _ C HERE " + str(coef_c))
+		# print ("COEF _ C HERE " + str(coef_c))
 
 
 		r_prev = r_next
 		r_next = r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 		s_prev = s_next
 		s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
-		print ( "r - prev :" + str( r_prev))
-		print ( "r_next : " + str(r_next))
-		print ("s_prev :" + str(s_prev))
-		print ("s_next : "+ str(s_next))
+		
+	print ( "r - prev :" + str( r_prev))
+	# print ( "r_next : " + str(r_next))
+	print ("s_prev :" + str(s_prev))
+	# print ("s_next : "+ str(s_next))
+	print (my_numpy.roots([1,-r_prev,-s_prev]))
 
 	# print(D_cal_(coef_c))
 	# print(D1_cal_(coef_b,coef_c))
