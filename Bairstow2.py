@@ -32,6 +32,11 @@ def r_cal_(r_prev,D1,D):
 def s_cal_(s_prev,D2,D):
 	return s_prev + D2/D
 
+def poly_div_(arr1,arr2):
+	poly1 = my_numpy.array(arr1)
+	poly2 = my_numpy.array(arr2)
+	Q, R = my_numpy.polydiv(p2, p1)
+	return Q
 
 
 
@@ -77,20 +82,25 @@ if __name__ == "__main__":
 			temp = b_cal_(coef_a,i,len(coef_a)-1,r_next,s_next)
 			coef_b.append(temp)
 			i +=1
+		print ("COEF _ B HERE " + str(coef_b))
 
 		i=0
+
 		while (i<len(coef_b)): 
 			temp = c_cal_(coef_b,i,len(coef_b)-1,r_next,s_next)
-			coef_b.append(temp)
+			coef_c.append(temp)
 			i +=1
+		print ("COEF _ C HERE " + str(coef_c))
 
-			
+
 		r_prev = r_next
 		r_next = r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 		s_prev = s_next
 		s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
-		print ( "prev :" + str( r_prev))
-		print ( r_next)
+		print ( "r - prev :" + str( r_prev))
+		print ( "r_next : " + str(r_next))
+		print ("s_prev :" + str(s_prev))
+		print ("s_next : "+ str(s_next))
 
 	# print(D_cal_(coef_c))
 	# print(D1_cal_(coef_b,coef_c))
@@ -98,6 +108,3 @@ if __name__ == "__main__":
 	# print(r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c)))
 	# print(s_cal_(s,D2_cal_(coef_b,coef_c),D_cal_(coef_c)))
 
-	# p2 = m_numpy.array([1, 1, 3, 4, 6])
-	# p1 = m_numpy.array([1, 2, 2])
-	# quotient, remainder = m_numpy.polydiv(p2, p1)
