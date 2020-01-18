@@ -95,11 +95,14 @@ def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s):
 	rs_container = []
 	rs_container.append(r_prev)
 	rs_container.append(s_prev)
+	roots.append(my_numpy.roots([1,-r_prev,-s_prev]))
 	print(coef_a)
-	coef_a = poly_div_(coef_a,rs_container)
+	print("in Fucntion roots" + str(roots))
+	coef_a_reveresed = list(reversed(coef_a)) # chun poly_dive numpy be soorate index[0] zaribe x ba bishtarin tavan vali man baraks kar kardam bayad revers she
+	coef_a = poly_div_(coef_a_reveresed,[1,-r_prev,-s_prev]) #inja darim poly jadidemun ro be dast miarim 
+	
+	# print("in bairstow function" +str(coef_a))
 	coef_a = list(reversed(coef_a))
-	print("in bairstow function" +str(coef_a))
-
 	return coef_a
 
 
@@ -127,4 +130,13 @@ if __name__ == "__main__":
 
 	''' ~~~~ ~~~~'''
 
-	print(calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s))
+	while(True):
+
+		if(len(coef_a) > 3 ):
+			coef_a = calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s)
+			print(coef_a)
+		else:
+			coef_a_reveresed = list(reversed(coef_a))
+			roots.append(my_numpy.roots(coef_a_reveresed))
+			break
+	print ("after while roots :" + str(roots))
