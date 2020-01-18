@@ -1,4 +1,6 @@
 
+import numpy as my_numpy
+
 ''' FUNCTIONS '''
 
 def b_cal_(coef_arr, k , n,r_coef,s_coef):
@@ -48,36 +50,54 @@ if __name__ == "__main__":
 
 	''' ~~~~ ~~~~'''
 
-	while (i<len(coef_a)): ''' First time Calculating array of Bs'''
+	while (i<len(coef_a)): 
 		temp = b_cal_(coef_a,i,len(coef_a)-1,r,s)
 		coef_b.append(temp)
 		i +=1
+		
 	print(coef_b)
 	i=0
-	while (i<len(coef_b)):  ''' First time Calculating array of Cs'''
+	while (i<len(coef_b)): 
 		temp = c_cal_(coef_b,i,len(coef_b)-1,r,s)
 		coef_c.append(temp)
 		i +=1
 	print(coef_c)
 
-	i=0
+	s_prev = s
+	s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
 	r_prev = r
-	r_next=r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
+	r_next=r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 
-	while(r_next - r_prev >0.000001):
+	while(( r_next - r_prev >0.000001 ) or ( s_next - s_prev > 0.000001 )):
+
+		i=0
+		coef_b = []
+		coef_c = []
 		while (i<len(coef_a)): 
-		temp = b_cal_(coef_a,i,len(coef_a)-1,r,s)
-		coef_b.append(temp)
-		i +=1
-	
-		r_prev = r_next
-		r_next = r_cal_(r_next,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
+			temp = b_cal_(coef_a,i,len(coef_a)-1,r_next,s_next)
+			coef_b.append(temp)
+			i +=1
 
+		i=0
+		while (i<len(coef_b)): 
+			temp = c_cal_(coef_b,i,len(coef_b)-1,r_next,s_next)
+			coef_b.append(temp)
+			i +=1
+
+			
+		r_prev = r_next
+		r_next = r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
+		s_prev = s_next
+		s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
 		print ( "prev :" + str( r_prev))
 		print ( r_next)
 
 	# print(D_cal_(coef_c))
-	print(D1_cal_(coef_b,coef_c))
+	# print(D1_cal_(coef_b,coef_c))
 	# print(D2_cal_(coef_b,coef_c))
 	# print(r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c)))
 	# print(s_cal_(s,D2_cal_(coef_b,coef_c),D_cal_(coef_c)))
+
+	# p2 = m_numpy.array([1, 1, 3, 4, 6])
+	# p1 = m_numpy.array([1, 2, 2])
+	# quotient, remainder = m_numpy.polydiv(p2, p1)
