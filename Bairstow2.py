@@ -43,27 +43,9 @@ def poly_div_(arr1,arr2):
 
 
 
-
-
-
-
-
-
-
-
-''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
-
-if __name__ == "__main__":
+def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s):
 	
-	''' ~~~~ Variables ~~~~'''
-	
-	coef_b = []
-	coef_c = []
-	coef_a = [-3.0000,2.0000,1.0000,0.0000,-1.0000,-1.0000]
-	roots =[]
 	i=0
-	r = -2.1
-	s = -1.9
 
 	''' ~~~~ ~~~~'''
 
@@ -116,14 +98,33 @@ if __name__ == "__main__":
 	print(coef_a)
 	coef_a = poly_div_(coef_a,rs_container)
 	coef_a = list(reversed(coef_a))
-	print(coef_a)
-	# print ( "r - prev :" + str( r_prev))
-	# print ("s_prev :" + str(s_prev))
-	# print (my_numpy.roots(array([1,-r_prev,-s_prev])))
+	print("in bairstow function" +str(coef_a))
 
-	# print(D_cal_(coef_c))
-	# print(D1_cal_(coef_b,coef_c))
-	# print(D2_cal_(coef_b,coef_c))
-	# print(r_cal_(r,D1_cal_(coef_b,coef_c),D_cal_(coef_c)))
-	# print(s_cal_(s,D2_cal_(coef_b,coef_c),D_cal_(coef_c)))
+	return coef_a
 
+
+
+
+
+
+
+
+
+
+''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
+
+if __name__ == "__main__":
+	
+	''' ~~~~ Variables ~~~~'''
+	
+	coef_b = []
+	coef_c = []
+	coef_a = [-3.0000,2.0000,1.0000,0.0000,-1.0000,-1.0000]
+	roots =[]
+	i=0
+	r = -2.1
+	s = -1.9
+
+	''' ~~~~ ~~~~'''
+
+	print(calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s))
