@@ -43,7 +43,7 @@ def poly_div_(arr1,arr2):
 
 
 
-def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s):
+def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s,rs_container):
 	
 	i=0
 
@@ -66,8 +66,8 @@ def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s):
 	s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
 	r_prev = r
 	r_next=r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
-
-	while(( abs(r_next - r_prev) >0.000001 ) or ( abs(s_next - s_prev) > 0.000001 )):
+	counter = 0
+	while(( abs(r_next - r_prev) >0.000001 )  ):
 
 		i=0
 		coef_b = []
@@ -91,18 +91,23 @@ def calculate_newCoef (coef_a,coef_b,coef_c,roots,r,s):
 		r_next = r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 		s_prev = s_next
 		s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
+		print ( " r Jadid = " + str(r_next) + " S jadid = " + str(s_next) + " Dowre " +str(counter) )
+		counter +=1 
+
+
 	
-	rs_container = []
 	rs_container.append(r_prev)
 	rs_container.append(s_prev)
-	roots.append(my_numpy.roots([1,-r_prev,-s_prev]))
+	roots.append(my_numpy.roots([1,-r_next,-s_next]))
+	
+	
 	print(coef_a)
 	print("in Fucntion roots" + str(roots))
-	coef_a_reveresed = list(reversed(coef_a)) # chun poly_dive numpy be soorate index[0] zaribe x ba bishtarin tavan vali man baraks kar kardam bayad revers she
-	coef_a = poly_div_(coef_a_reveresed,[1,-r_prev,-s_prev]) #inja darim poly jadidemun ro be dast miarim 
+	
+	coef_a = poly_div_(coef_a,[1,-r_next,-s_next]) #inja darim poly jadidemun ro be dast miarim 
 	
 	# print("in bairstow function" +str(coef_a))
-	coef_a = list(reversed(coef_a))
+	
 	return coef_a
 
 
@@ -124,6 +129,7 @@ if __name__ == "__main__":
 	coef_c = []
 	coef_a = [-3.0000,2.0000,1.0000,0.0000,-1.0000,-1.0000]
 	roots =[]
+	rs_container =[]
 	i=0
 	r = -2.1
 	s = -1.9
@@ -133,10 +139,13 @@ if __name__ == "__main__":
 	while(True):
 
 		if(len(coef_a) > 3 ):
-			coef_a = calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s)
-			print(coef_a)
+			coef_a = calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s,rs_container)
+			print ("THIS IS r " + str(r))
+			print ("THIS IS S " + str(s))
+			print("THIS IS COEF " + str(coef_a))
 		else:
-			coef_a_reveresed = list(reversed(coef_a))
-			roots.append(my_numpy.roots(coef_a_reveresed))
+			
+			roots.append(my_numpy.roots(coef_a))
 			break
 	print ("after while roots :" + str(roots))
+	print ("THIS IS RS CONTAINER :" + str(rs_container))
