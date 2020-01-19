@@ -151,5 +151,5 @@ if __name__ == "__main__":
 	### tebghe mesale ketab
 	
 	# print(b_array_calculator(list(reversed(coef_a)),coef_b,r,s)) 
-	
+	# print(c_array_calculator(coef_b,coef_c,r,s)) 
 	
