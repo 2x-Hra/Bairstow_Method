@@ -123,7 +123,42 @@ if __name__ == "__main__":
 
 
 
+	
+	coef_b = []
+	coef_c = []
 
+	
+	coef_a =[]
+
+	while(True):
+		counter3 = 0
+		degree = int(input("Degree ? "))
+		coefficients = input("Coefficents ? ")
+		coefficients_arr = coefficients.split()
+		if (len(coefficients_arr)== degree+1):
+
+			while(counter3 <len(coefficients_arr)):
+				coef_a.append(int(coefficients_arr[counter3]))
+				counter3 +=1	
+
+			print(coef_a)
+			roots =[]
+			rs_container =[]
+			i=0
+			r = -2.1
+			s = -1.9
+
+			''' ~~~~ ~~~~'''
+
+			while(True):
+
+				if(len(coef_a) > 3 ): # agar bishtr az daraje 2 bood
+					coef_a = calculate_newCoef(coef_a,coef_b,coef_c,roots,r,s,rs_container)
+				
+				else:
+					
+					roots.append(list(my_numpy.roots(coef_a)))
+					break
 
 
 
