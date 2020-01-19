@@ -116,3 +116,5 @@ def final_roots_array_maker (roots_array):
 	return temp
 
 ''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
+
+if __name__ == "__main__":
