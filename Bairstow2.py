@@ -76,7 +76,7 @@ def calculate_newCoef (coef_a,coef_b,coef_c,roots,r_coef,s_coef,rs_container):
 	r_prev = r
 	r_next=r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
 	# counter = 0
-	while(( abs(r_next - r_prev) > 0.000001 )  ):
+	while(( abs(r_next - r_prev) > 0.000001 ) and abs(s_next - s_prev) > 0.000001 ):
 
 		
 		coef_b = []
