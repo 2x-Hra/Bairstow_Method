@@ -61,7 +61,47 @@ def c_array_calculator(coef_b,coef_c,r_coef,s_coef):
 		i +=1
 	return coef_c
 
+def calculate_newCoef (coef_a,coef_b,coef_c,roots,r_coef,s_coef,rs_container):
+	
+	b_array_calculator(list(reversed(coef_a)),coef_b,r_coef,s_coef)
+		#chun arraye Coef_A be tartibe zaribe bishtarin tavan hast va man baraye mohasebeye 
+		#b niaz be artibe az 0 daram array ra Reverse miknam va mifrestam
 
+	c_array_calculator(coef_b,coef_c,r_coef,s_coef)
+		# dar inja niaz be reverse nis chun array b ke towliad mishavad moratab ast
+
+	# print(r_coef,s_coef)
+	s_prev = s
+	s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
+	r_prev = r
+	r_next=r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
+	# counter = 0
+	while(( abs(r_next - r_prev) > 0.000001 )  ):
+
+		
+		coef_b = []
+		coef_c = []
+
+		b_array_calculator(list(reversed(coef_a)),coef_b,r_next,s_next)
+
+		c_array_calculator(coef_b,coef_c,r_next,s_next)
+		
+		r_prev = r_next	
+		r_next = r_cal_(r_prev,D1_cal_(coef_b,coef_c),D_cal_(coef_c))
+		s_prev = s_next
+		s_next = s_cal_(s_prev,D2_cal_(coef_b,coef_c),D_cal_(coef_c))
+		# print ( " r Jadid = " + str(r_next) + " S jadid = " + str(s_next) + " Dowre " +str(counter) )
+		# counter +=1 
+		
+	rs_container.append(r_next)
+	rs_container.append(s_next)
+	roots.append(list(my_numpy.roots([1,-r_next,-s_next])))
+	
+	 
+	
+	coef_a = poly_div_(coef_a,[1,-r_next,-s_next]) #inja darim poly jadidemun ro be dast miarim 
+	
+	return coef_a
 
 
 
