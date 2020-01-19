@@ -175,7 +175,18 @@ if __name__ == "__main__":
 				counter +=1
 			print(str(result[0])+ " " + str(result[1]))
 
-			
+			ques = input("Do you wanna try again? ")
+			if (ques == "yes"):
+				continue
+			else:
+				break
+		else:
+			ques = input("Do you wanna try again? ")
+			if (ques == "yes"):
+				continue
+			else:
+				break
+
 
 
 
