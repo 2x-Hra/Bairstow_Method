@@ -103,6 +103,16 @@ def calculate_newCoef (coef_a,coef_b,coef_c,roots,r_coef,s_coef,rs_container):
 	
 	return coef_a
 
-
+def final_roots_array_maker (roots_array):
+	temp=[]
+	counter =0
+	counter2 =0
+	while ( counter < len(roots)):
+		counter2= 0
+		while ( counter2 < len((roots)[counter2]) ):
+			temp.append(round(roots[counter][counter2],6)) 
+			counter2 +=1
+		counter+=1
+	return temp
 
 ''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
