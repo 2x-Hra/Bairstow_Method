@@ -109,7 +109,7 @@ def final_roots_array_maker (roots_array):
 	counter2 =0
 	while ( counter < len(roots)):
 		counter2= 0
-		while ( counter2 < len((roots)[counter2]) ):
+		while ( counter2 < len((roots)[counter]) ):
 			temp.append(round(roots[counter][counter2],6)) 
 			counter2 +=1
 		counter+=1
