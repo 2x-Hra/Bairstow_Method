@@ -159,7 +159,23 @@ if __name__ == "__main__":
 					
 					roots.append(list(my_numpy.roots(coef_a)))
 					break
+			#---------------------------#
 
+			''' Outputs'''
+
+			final_roots =[]
+			final_roots = final_roots_array_maker(roots)
+			result =[0,0]
+			print(final_roots)
+			counter = 0
+			while(counter < len(final_roots)):
+				if(final_roots[counter].imag >= 0):
+					result[0] = (round(result[0] + final_roots[counter].real,6))
+					result[1] = result[1] + final_roots[counter].imag
+				counter +=1
+			print(str(result[0])+ " " + str(result[1]))
+
+			
 
 
 
