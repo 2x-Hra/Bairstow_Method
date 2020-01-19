@@ -118,3 +118,38 @@ def final_roots_array_maker (roots_array):
 ''' ~~~~~~~~~~~~ MAIN ~~~~~~~~~~~~ '''
 
 if __name__ == "__main__":
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#---------------------------#
+	
+	## ina baraye Check kardan function haye khodam hast ke hamegi check shode va dorost ast
+	### tebghe mesale ketab
+	
+	# print(b_array_calculator(list(reversed(coef_a)),coef_b,r,s)) 
+	
+	
